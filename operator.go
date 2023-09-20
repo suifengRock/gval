@@ -67,6 +67,9 @@ func (l Language) isOperatorPrefix(op string) bool {
 
 func (op *infix) initiate(name string) {
 	f := func(a, b interface{}) (interface{}, error) {
+		if a == nil{
+			return nil, nil
+		}
 		return nil, fmt.Errorf("invalid operation (%T) %s (%T)", a, name, b)
 	}
 	if op.arbitrary != nil {

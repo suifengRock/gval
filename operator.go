@@ -165,6 +165,9 @@ func convertToBool(o interface{}) (bool, bool) {
 	if f, ok := convertToFloat(o); ok {
 		return f != 0., true
 	}
+	if v.Kind() == reflect.Slice || v.Kind() == reflect.Array {
+		return v.Len() != 0, true
+	}
 	return false, false
 }
 func getBoolOpFunc(o func(a, b bool) (interface{}, error), f opFunc, typeConversion bool) opFunc {

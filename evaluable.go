@@ -144,7 +144,7 @@ func variable(path Evaluables) Evaluable {
 				var ok bool
 				v, ok = reflectSelect(k, o)
 				if !ok {
-					return nil, fmt.Errorf("unknown parameter %s", strings.Join(keys[:i+1], "."))
+					return nil, nil
 				}
 			}
 		}

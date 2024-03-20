@@ -6,7 +6,6 @@ import (
 	"reflect"
 	"regexp"
 	"strconv"
-	"strings"
 )
 
 // Selector allows for custom variable selection from structs
@@ -121,7 +120,7 @@ func variable(path Evaluables) Evaluable {
 		if err != nil {
 			return nil, err
 		}
-		for i, k := range keys {
+		for _, k := range keys {
 			switch o := v.(type) {
 			case Selector:
 				v, err = o.SelectGVal(c, k)
